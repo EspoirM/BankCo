@@ -1,11 +1,11 @@
 #BankCo Script to integrate two Data Sources
 
 
-This is a Python script that makes HTTP requests to two APIs: a JSON list and an XML list and output two CSV files: a list of transactions
-and an aggregated summary of spend per city
+Description:
+The Python script on https://github.com/EspoirM/BankCo/  makes HTTP requests to two APIs: a JSON list and an XML list and output two CSV files: a list of transactions and an aggregated summary of spend per city, these csv files are also uploaded on the above link at Github
+ 
+Dependencies: 
+the script is writen in python 3, except that some libraries like requests and geocoder were installed using pip at the command line, "pip install requests" and "pip install geocoder"
 
 
-The Script is writen in the process of an interview to the posiotion of Data Scientist at Bank of Kigali Digital Factory
-
-
-To run the script you only need a python enabled environment, a python shell or any python IDE
+Author: Espoir M NGABO
