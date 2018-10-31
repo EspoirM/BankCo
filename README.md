@@ -1,7 +1,7 @@
 #BankCo Script to integrate two Data Sources
 
 
-This is a script that makes HTTP requests from two APIs: a JSON list and an XML list and output two CSV files: a list of transactions
+This is a Python script that makes HTTP requests to two APIs: a JSON list and an XML list and output two CSV files: a list of transactions
 and an aggregated summary of spend per city
 
 
