@@ -2,7 +2,7 @@
 
 
 Description:
-The Python script on https://github.com/EspoirM/BankCo/  makes HTTP requests to two APIs: a JSON list and an XML list and output two CSV files: a list of transactions and an aggregated summary of spend per city, these csv files are also uploaded on the above link at Github
+The Python script under the name "BankCo_Data_Manipilation" on https://github.com/EspoirM/BankCo/  makes HTTP requests to two APIs: a JSON list and an XML list and output two CSV files: a list of transactions and an aggregated summary of spend per city, these csv files (transactions.csv and city_totals.csv)  are also uploaded on the above link at Github
  
 Dependencies: 
 the script is writen in python 3, except that some libraries like requests and geocoder were installed using pip at the command line, "pip install requests" and "pip install geocoder"
