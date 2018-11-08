@@ -2,6 +2,7 @@ import requests
 import geocoder
 import xml.etree.ElementTree as ET
 import csv
+import datetime
 
 cities = {}
 
@@ -16,7 +17,7 @@ def get_city_name(lat, lon):
 
 resp = requests.get('https://df-dev.bk.rw/interview01/transactions')
 raw_transactions = resp.json()
-print(raw_transactions)
+#print(raw_transactions)
 
 resp2 = requests.get("https://df-dev.bk.rw/interview01/customers")
 
@@ -29,14 +30,14 @@ for elt in root.getchildren():
         cust_dict[tag_elt.tag] = tag_elt.text
     customers[cust_dict['id']] = cust_dict['name']
 
-print(customers)
+#print(customers)
 transactions =[]
 city_transactions = {}
 
 i = 1
 for elt in raw_transactions:
     transaction_id = i
-    datetime = elt['timestamp']
+    DateTime =  datetime.datetime.utcfromtimestamp(int(elt['timestamp']/1000))
     customer_id = elt['customerId']
     city_name = get_city_name(elt['latitude'], elt['longitude'])
     customer_name = customers[str(elt['customerId'])]
@@ -44,7 +45,7 @@ for elt in raw_transactions:
 	
     transactions.append(dict(
         transaction_id=transaction_id, 
-        datetime=datetime, 
+        DateTime=DateTime, 
         customer_id=customer_id, 
         city_name=city_name, 
         customer_name=customer_name, 
@@ -62,7 +63,7 @@ with open('transactions.csv', 'w') as trans_csv:
     csv_writer = csv.writer(trans_csv)
     csv_writer.writerow(["%s, %s, %s, %s, %s, %s/n" % ("transaction_id", "datetime", "customer_id", "customer_name", "amount", "city_name")])
     for elt in transactions:
-        csv_writer.writerow(["%s, %s, %s, %s, %s, %s/n" % (elt["transaction_id"], elt["datetime"], elt["customer_id"], elt["customer_name"], elt["amount"], elt["city_name"])])
+        csv_writer.writerow(["%s, %s, %s, %s, %s, %s/n" % (elt["transaction_id"], elt["DateTime"], elt["customer_id"], elt["customer_name"], elt["amount"], elt["city_name"])])
 
 
 with open('city_totals.csv', 'w') as city_csv:
